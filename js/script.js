@@ -17,4 +17,12 @@ jobRole.addEventListener("change", (event) => {
   }
 });
 
-console.log();
+//TShirt Section
+let designTshirt = document.getElementById("design");
+let colorShirt = document.getElementById("color");
+let colorOptions = colorShirt.children;
+colorShirt.disabled = true;
+designTshirt.addEventListener("change", (event) => {
+  colorShirt.disabled = false;
+});
+console.log(colorOptions);
