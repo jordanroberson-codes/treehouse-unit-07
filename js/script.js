@@ -38,6 +38,7 @@ designTshirt.addEventListener("change", (event) => {
   }
 });
 // Register for Activities Section
+//creates an event listener for the activity options that produces a total based on the cost of each option.
 const activityOptions = document.getElementById("activities");
 let activityTotal = document.getElementById("activities-cost");
 let activeCheckbox = document.querySelectorAll(".activites-box input");
@@ -53,4 +54,29 @@ activityOptions.addEventListener("change", (e) => {
   activityTotal.innerHTML = `Total: $${totalCost}`;
 });
 
-//
+// Payment Info
+let paymentMethod = document.getElementById("payment");
+let cardInfo = document.getElementById("credit-card");
+let payPal = document.getElementById("paypal");
+let bitCoin = document.getElementById("bitcoin");
+
+payPal.style.display = "none";
+bitCoin.style.display = "none";
+
+paymentMethod[1].setAttribute("selected", true);
+
+paymentMethod.addEventListener("change", (event) => {
+  if (event.target.value === "credit-card") {
+    cardInfo.style.display = "block";
+    payPal.style.display = "none";
+    bitCoin.style.display = "none";
+  } else if (event.target.value === "paypal") {
+    payPal.style.display = "block";
+    cardInfo.style.display = "none";
+    bitCoin.style.display = "none";
+  } else if (event.target.value === "bitcoin") {
+    bitCoin.style.display = "block";
+    cardInfo.style.display = "none";
+    payPal.style.display = "none";
+  }
+});
