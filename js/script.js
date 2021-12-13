@@ -38,3 +38,19 @@ designTshirt.addEventListener("change", (event) => {
   }
 });
 // Register for Activities Section
+const activityOptions = document.getElementById("activities");
+let activityTotal = document.getElementById("activities-cost");
+let activeCheckbox = document.querySelectorAll(".activites-box input");
+let totalCost = 0;
+activityOptions.addEventListener("change", (e) => {
+  let dataCost = e.target.getAttribute("data-cost");
+  dataCost = parseInt(dataCost);
+  if (e.target.checked) {
+    totalCost += dataCost;
+  } else {
+    totalCost -= dataCost;
+  }
+  activityTotal.innerHTML = `Total: $${totalCost}`;
+});
+
+//
