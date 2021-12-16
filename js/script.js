@@ -80,3 +80,41 @@ paymentMethod.addEventListener("change", (event) => {
     payPal.style.display = "none";
   }
 });
+
+//Form Validation
+
+let email = document.getElementById("email");
+let cardNumber = document.getElementById("cc-num");
+let zipCode = document.getElementById("zip");
+let cvv = document.getElementById("cvv");
+let form = document.querySelector("form");
+
+function regexName() {
+  let nameValue = nameInput.value;
+  let nameTest = /^[a-z]/i.test(nameValue);
+  return nameTest;
+}
+
+function regexEmail() {
+  let emailValue = email.value;
+  let emailTest = /^[^@]+@[^@.]+\.\w{2,}/i.test(emailValue);
+  return emailTest;
+}
+
+function regexCard() {
+  let cardValue = cardNumber.value;
+  let cardTest = /^\d{13,19}$/.test(cardValue);
+  return cardTest;
+}
+
+function regexZip() {
+  let zipValue = zipCode.value;
+  let zipTest = /^\d{5}$/.test(zipValue);
+  return zipTest;
+}
+
+function regexCvv() {
+  let cvvValue = cvv.value;
+  let cvvTest = /^\d{3,4}$/.test(cvvValue);
+  return cvvTest;
+}
