@@ -92,8 +92,15 @@ let form = document.querySelector("form");
 function regexName() {
   let nameValue = nameInput.value;
   let nameTest = /^[a-z]/i.test(nameValue);
-  return nameTest;
+  if (!nameTest) {
+    nameInput.parentNode.classList.add("not-valid");
+    nameInput.parentElement.lastElementChild.style.display = "block";
+  } else {
+    nameInput.parentNode.classList.replace("not-valid", "valid");
+    return true;
+  }
 }
+console.log(regexName("123124"));
 
 function regexEmail() {
   let emailValue = email.value;
