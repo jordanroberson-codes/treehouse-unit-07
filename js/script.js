@@ -181,6 +181,10 @@ form.addEventListener("submit", (event) => {
   if (!cvvValidation()) {
     event.preventDefault();
   }
+  if (!activityValidator()) {
+    event.preventDefault();
+  }
+
   if (paymentMethod.value === "credit-card") {
     if (!cardValidation()) {
       event.preventDefault();
