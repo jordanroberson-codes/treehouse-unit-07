@@ -156,19 +156,19 @@ function cvvValidation() {
 
 //event listener being added to the form to prevent default behavior if validators are invalid.
 form.addEventListener("submit", (event) => {
-  if (!nameValidation) {
+  if (!nameValidation()) {
     event.preventDefault();
   }
-  if (!emailValidation) {
+  if (!emailValidation()) {
     event.preventDefault();
   }
-  if (!cardValidation) {
+  if (!cardValidation()) {
     event.preventDefault();
   }
-  if (!zipValidation) {
+  if (!zipValidation()) {
     event.preventDefault();
   }
-  if (!cvvValidation) {
+  if (!cvvValidation()) {
     event.preventDefault();
   }
 });
