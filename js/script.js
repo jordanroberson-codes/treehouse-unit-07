@@ -41,7 +41,7 @@ designTshirt.addEventListener("change", (event) => {
 //creates an event listener for the activity options that produces a total based on the cost of each option.
 const activityOptions = document.getElementById("activities");
 let activityTotal = document.getElementById("activities-cost");
-let activeCheckbox = document.querySelectorAll(".activites-box input");
+let activeCheckbox = document.querySelectorAll(".activities-box input");
 let totalCost = 0;
 activityOptions.addEventListener("change", (e) => {
   let dataCost = e.target.getAttribute("data-cost");
