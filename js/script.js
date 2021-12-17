@@ -83,13 +83,15 @@ paymentMethod.addEventListener("change", (event) => {
 
 //Form Validation
 
+//variables selecting DOM element
 let email = document.getElementById("email");
 let cardNumber = document.getElementById("cc-num");
 let zipCode = document.getElementById("zip");
 let cvv = document.getElementById("cvv");
 let form = document.querySelector("form");
 
-function regexName() {
+//function that validates name input with appropriate regex sequence and adds class of valid or not-valid depending on whether the user input passes the regex format.
+function nameValidation() {
   let nameValue = nameInput.value;
   let nameTest = /^[a-z]/i.test(nameValue);
   if (!nameTest) {
@@ -100,28 +102,84 @@ function regexName() {
     return true;
   }
 }
-console.log(regexName("123124"));
-
-function regexEmail() {
+//function that validates email input with appropriate regex sequence and adds class of valid or not-valid depending on whether the user input passes the regex format.
+function emailValidation() {
   let emailValue = email.value;
   let emailTest = /^[^@]+@[^@.]+\.\w{2,}/i.test(emailValue);
-  return emailTest;
+  if (!emailTest) {
+    email.parentNode.classList.add("not-valid");
+    email.parentElement.lastElementChild.style.display = "block";
+  } else {
+    email.parentNode.classList.replace("not-valid", "valid");
+    return true;
+  }
 }
 
-function regexCard() {
+//function that validates credit card input with appropriate regex sequence and adds class of valid or not-valid depending on whether the user input passes the regex format.
+function cardValidation() {
   let cardValue = cardNumber.value;
-  let cardTest = /^\d{13,19}$/.test(cardValue);
-  return cardTest;
+  let cardTest = /^\d{13,16}$/.test(cardValue);
+  if (!cardTest) {
+    cardNumber.parentNode.classList.add("not-valid");
+    cardNumber.parentElement.lastElementChild.style.display = "block";
+  } else {
+    cardNumber.parentNode.classList.replace("not-valid", "valid");
+    return true;
+  }
 }
 
-function regexZip() {
+//function that validates zip code input with appropriate regex sequence and adds class of valid or not-valid depending on whether the user input passes the regex format.
+function zipValidation() {
   let zipValue = zipCode.value;
   let zipTest = /^\d{5}$/.test(zipValue);
-  return zipTest;
+  if (!zipTest) {
+    zipCode.parentNode.classList.add("not-valid");
+    zipCode.parentElement.lastElementChild.style.display = "block";
+  } else {
+    zipCode.parentNode.classList.replace("not-valid", "valid");
+    return true;
+  }
 }
 
-function regexCvv() {
+//function that validates CVV code of a credit card input with appropriate regex sequence and adds class of valid or not-valid depending on whether the user input passes the regex format.
+function cvvValidation() {
   let cvvValue = cvv.value;
   let cvvTest = /^\d{3,4}$/.test(cvvValue);
-  return cvvTest;
+  if (!cvvTest) {
+    cvv.parentNode.classList.add("not-valid");
+    cvv.parentElement.lastElementChild.style.display = "block";
+  } else {
+    cvv.parentNode.classList.replace("not-valid", "valid");
+    return true;
+  }
+}
+
+//event listener being added to the form to prevent default behavior if validators are invalid.
+form.addEventListener("submit", (event) => {
+  if (!nameValidation) {
+    event.preventDefault();
+  }
+  if (!emailValidation) {
+    event.preventDefault();
+  }
+  if (!cardValidation) {
+    event.preventDefault();
+  }
+  if (!zipValidation) {
+    event.preventDefault();
+  }
+  if (!cvvValidation) {
+    event.preventDefault();
+  }
+});
+
+//Accessibility
+
+for (let i = 0; i < activeCheckbox.length; i++) {
+  activeCheckbox[i].addEventListener("focus", (event) => {
+    activeCheckbox[i].parentNode.classList.add("focus");
+  });
+  activeCheckbox[i].addEventListener("blur", (event) => {
+    activeCheckbox[i].parentNode.classList.removeAttribute("focus");
+  });
 }
