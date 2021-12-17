@@ -201,6 +201,6 @@ for (let i = 0; i < activeCheckbox.length; i++) {
     activeCheckbox[i].parentNode.classList.add("focus");
   });
   activeCheckbox[i].addEventListener("blur", (event) => {
-    activeCheckbox[i].parentNode.classList.removeAttribute("focus");
+    activeCheckbox[i].parentNode.classList.remove("focus");
   });
 }
