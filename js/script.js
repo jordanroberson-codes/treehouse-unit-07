@@ -153,6 +153,16 @@ function cvvValidation() {
     return true;
   }
 }
+//function that validates activites input with appropriate regex sequence and adds class of valid or not-valid depending on whether the user input passes the regex format.
+function activityValidator() {
+  if (totalCost === 0) {
+    activityOptions.classList.add("not-valid");
+    activityOptions.lastElementChild.style.display = "block";
+  } else {
+    activityOptions.classList.replace("not-valid", "valid");
+    return true;
+  }
+}
 
 //event listener being added to the form to prevent default behavior if validators are invalid.
 form.addEventListener("submit", (event) => {
@@ -170,6 +180,17 @@ form.addEventListener("submit", (event) => {
   }
   if (!cvvValidation()) {
     event.preventDefault();
+  }
+  if (paymentMethod.value === "credit-card") {
+    if (!cardValidation()) {
+      event.preventDefault();
+    }
+    if (!zipValidation()) {
+      event.preventDefault();
+    }
+    if (!cvvValidation()) {
+      event.preventDefault();
+    }
   }
 });
 
